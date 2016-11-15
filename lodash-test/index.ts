@@ -1,6 +1,6 @@
-var lodash = require('lodash');
+import * as lodash from 'lodash';
 
-module.exports = function (context, req) {
+export function azureFunction(context, req) {
   context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 
   // if (req.query.name || (req.body && req.body.name)) {
