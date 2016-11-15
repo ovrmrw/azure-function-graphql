@@ -4,5 +4,8 @@ robocopy . ../wwwroot /S /XD node_modules jspm_packages .git .vscode
 REM change current dir to wwwroot.
 cd ../wwwroot
 
+REM run npm install
+npm install
+
 REM run build task.
 npm run build:azure
