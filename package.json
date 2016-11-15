@@ -20,6 +20,7 @@
   "homepage": "https://github.com/ovrmrw/azure-function-graphql#readme",
   "dependencies": {
     "azure-functions-auth0": "^1.0.1",
+    "cloudant": "^1.6.2",
     "dataloader": "^1.2.0",
     "graphql": "^0.8.1",
     "graphql-tools": "^0.8.1",
