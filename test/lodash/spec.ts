@@ -1,7 +1,7 @@
 import * as assert from 'power-assert';
 
 import { truthy } from '../lib';
-import { lodashAzureFunction, now } from '../../lodash';
+import { lodashAzureFunction, now } from '../../lodash/main';
 import { AFContext, AFRequest } from '../../types';
 
 
