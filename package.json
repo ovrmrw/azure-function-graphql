@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "tsc -p build/tsconfig-test.json",
-    "test": "mocha --require .dest-test/test/lib/espower-enable .dest-test/test/**/*.js",
+    "test": "mocha --require .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
     "build:azure": "tsc -p build/tsconfig-azure.json"
   },
   "repository": {

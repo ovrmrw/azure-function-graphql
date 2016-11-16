@@ -3,15 +3,17 @@ import * as now from 'lodash/now';
 import { AzureFunction } from '../types';
 
 
-export const lodashAzureFunction: (context: any, req: any) => Promise<{}> =
+export const lodashAzureFunction: AzureFunction =
   (context, req) => {
-    return new Promise(resolve => {
+    return (async () => {
       context.res = {
         status: 200,
         body: 'now: ' + now()
       };
-      resolve(context.done());
-    });
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      context.done();
+    })();
   };
 
 
