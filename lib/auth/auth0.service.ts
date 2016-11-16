@@ -2,7 +2,7 @@ const auth0HookFunction = require('azure-functions-auth0');
 
 import { NestedAzureFunction } from '../../types';
 
-const auth0Config = require('../auth0.secret.json');
+const auth0Config = require('../../auth0.secret.json');
 
 
 export const auth0AuthenticationHook: NestedAzureFunction =
