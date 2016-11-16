@@ -4,8 +4,9 @@
   "description": "(experimental)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:azure": "tsc -p build/tsconfig-azure.json "
+    "pretest": "tsc -p build/tsconfig-test.json",
+    "test": "mocha --require .dest-test/test/lib/espower-enable .dest-test/test/**/*.js",
+    "build:azure": "tsc -p build/tsconfig-azure.json"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,12 @@
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.31",
     "@types/lodash": "^4.14.39",
+    "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.47",
+    "@types/power-assert": "^1.4.29",
+    "dotenv": "^2.0.0",
+    "mocha": "^3.1.2",
+    "power-assert": "^1.4.2",
     "typescript": "^2.1.1"
   }
 }

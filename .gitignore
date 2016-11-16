@@ -39,3 +39,4 @@ jspm_packages
 
 .tscOutDir
 *.secret.json
+.dest*

@@ -19,5 +19,5 @@ export interface AzureFunction {
 
 
 export interface NestedAzureFunction {
-  (azureFunction: AzureFunction): AzureFunction;
+  (callback: AzureFunction): AzureFunction;
 }
