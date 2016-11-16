@@ -2,11 +2,12 @@ import { graphql } from 'graphql';
 
 // import { firebaseApp } from './firebase-initializer';
 import { executableSchema, executableSchema2, createLoaders, Context } from './data';
+import { AzureFunction } from '../types';
 
 
-
-export async function azureFunction(context, req): Promise<void> {
-  const query: string = (req.body && req.body.query) ? req.body.query : `
+export const graphqlAzureFunction: AzureFunction =
+  async (context, req) => {    
+    const query: string = (req.body && req.body.query) ? req.body.query : `
     {
       users {
         id
@@ -26,34 +27,34 @@ export async function azureFunction(context, req): Promise<void> {
       }
     }
   `;
-  // const query: string = (event.body && event.body.query) ? event.body.query : `
-  //   {
-  //     test
-  //   }
-  // `;
+    // const query: string = (event.body && event.body.query) ? event.body.query : `
+    //   {
+    //     test
+    //   }
+    // `;
 
-  const variables: {} = (req.body && req.body.variables) ? req.body.variables : null;
+    const variables: {} = (req.body && req.body.variables) ? req.body.variables : null;
 
-  const contextValue: Context = {
-    loaders: createLoaders()
+    const contextValue: Context = {
+      loaders: createLoaders()
+    };
+
+    console.log('query:', query);
+    console.log('variables:', variables);
+    console.log('contextValue:', contextValue);
+
+    try {
+      const result = await graphql(executableSchema, query, null, contextValue, variables);
+      context.res = {
+        status: 200,
+        body: result
+      };
+      context.done();
+    } catch (err) {
+      context.res = {
+        status: 400,
+        body: err
+      };
+      context.done();
+    }
   };
-
-  console.log('query:', query);
-  console.log('variables:', variables);
-  console.log('contextValue:', contextValue);
-
-  try {
-    const result = await graphql(executableSchema, query, null, contextValue, variables);
-    context.res = {
-      status: 200,
-      body: result
-    };
-    context.done();
-  } catch (err) {
-    context.res = {
-      status: 400,
-      body: err
-    };
-    context.done();
-  }
-};

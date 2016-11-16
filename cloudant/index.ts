@@ -1,3 +1,4 @@
+import { AzureFunction } from '../types';
 import { CloudantController, DocumentBase, SearchResult } from './cloudant-controller'
 
 
@@ -13,21 +14,22 @@ interface MyDoc {
 }
 
 
-export async function azureFunction(context: Context, req: any): Promise<void> {
-  const cc = new CloudantController();
-  const DB = 'mydb' // Database Name which you created.
+export const cloudantAzureFunction: AzureFunction =
+  async (context, req) => {
+    const cc = new CloudantController();
+    const DB = 'mydb' // Database Name which you created.
 
-  console.log('req:', req);
+    console.log('req:', req);
 
-  
-  const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', 'テキスト')
-  if (result) {
-    result.rows.forEach(row => console.log(row.fields))
-  }
 
-  context.res = {
-    status: 200,
-    body: result,
+    const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', 'テキスト')
+    if (result) {
+      result.rows.forEach(row => console.log(row.fields))
+    }
+
+    context.res = {
+      status: 200,
+      body: result,
+    };
+    context.done();
   };
-  context.done();
-}

@@ -1,18 +1,22 @@
 import * as lodash from 'lodash';
 
-const authConfig = require('../auth0.secret.json');
+import { AzureFunction } from '../types';
 
-const auth0: (fn: Function) => Function = require('azure-functions-auth0')({
-  clientId: authConfig.clientId,
-  clientSecret: authConfig.clientSecret,
-  domain: authConfig.domain,
-});
+// const authConfig = require('../auth0.secret.json');
+
+// const auth0: (fn: Function) => Function = require('azure-functions-auth0')({
+//   clientId: authConfig.clientId,
+//   clientSecret: authConfig.clientSecret,
+//   domain: authConfig.domain,
+// });
+import { auth0AuthenticationHook } from '../lib/auth';
 
 
-export const azureFunction = auth0(function (context, req) {
-  context.res = {
-    status: 200,
-    body: 'now: ' + lodash.now()
-  };
-  context.done();
-});
+export const lodashAzureFunction: AzureFunction =
+  auth0AuthenticationHook((context, req) => {
+    context.res = {
+      status: 200,
+      body: 'now: ' + lodash.now()
+    };
+    context.done();
+  });
