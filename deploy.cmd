@@ -5,5 +5,5 @@ REM change current dir to wwwroot.
 cd ../wwwroot
 
 REM run npm install and build task.
-npm install && npm run build:azure
-
+REM npm install && npm run build:azure
+npm run build:azure
