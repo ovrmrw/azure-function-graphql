@@ -1,5 +1,5 @@
-import { lodashAzureFunction } from './core';
+import { lodashAzureFunction } from './main';
 import { auth0AuthenticationHook } from '../lib/auth';
 
 
-export const af = auth0AuthenticationHook(lodashAzureFunction);
+export default auth0AuthenticationHook(lodashAzureFunction);

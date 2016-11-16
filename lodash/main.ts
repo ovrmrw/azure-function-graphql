@@ -9,7 +9,6 @@ export const lodashAzureFunction: AzureFunction =
       status: 200,
       body: 'now: ' + now()
     };
-
     await new Promise(resolve => setTimeout(resolve, 2000));
     // context.done();
   };
