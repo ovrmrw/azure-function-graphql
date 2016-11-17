@@ -1,11 +1,11 @@
 const child = require('child_process');
 
 
-try {
-    child.execSync('git checkout deploy-azure');
-} catch (err) {
-    console.error('Commit file changes before deploy.');
-}
+// try {
+//     child.execSync('git checkout deploy-azure');
+// } catch (err) {
+//     console.error('Commit file changes before deploy.');
+// }
 
 [
     'git add -A',
