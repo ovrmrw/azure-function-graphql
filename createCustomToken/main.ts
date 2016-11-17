@@ -20,13 +20,12 @@ export const firebaseAzureFunction: AzureFunction =
         status: 200,
         body: { result: { customToken } }
       };
-      context.done();
     } catch (error) {
       context.res = {
         status: 400,
         body: { error }
-      };
-      context.done();
+      };      
     }
+    context.done();
     return context;
   };

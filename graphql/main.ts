@@ -49,13 +49,12 @@ export const graphqlAzureFunction: AzureFunction =
         status: 200,
         body: { result }
       };
-      // context.done();
     } catch (error) {
       context.res = {
         status: 400,
         body: { error }
       };
-      // context.done();
     }
+    context.done();
     return context;
   };
