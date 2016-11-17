@@ -1,10 +1,10 @@
 const child = require('child_process');
 
 
-[
-  'git branch deploy-azure',
+[  
   'git add -A',
   'git commit -m "before deploy"',
+  'git branch deploy-azure',
   'git checkout deploy-azure',
   'git rebase master --skip',
   'npm run build:azure',
@@ -12,6 +12,7 @@ const child = require('child_process');
   'git commit -m "build:azure"',
   'git push origin deploy-azure',
   'git checkout master',
+  'git branch -D deploy-azure',
 ].forEach(command => {
   console.log('='.repeat(10), command);
   try {
