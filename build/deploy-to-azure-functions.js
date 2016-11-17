@@ -11,9 +11,13 @@ const child = require('child_process');
   'git push origin deploy-azure',
   'git checkout master',
 ].forEach(command => {
+  console.log('='.repeat(10), command);
   try {
-    child.execSync(command);
-  } catch (err) { }
+    const result = child.execSync(command).toString();
+    console.log(result);
+  } catch (err) { 
+    console.error(err);
+  }
 });
 
 // try {
