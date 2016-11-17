@@ -41,3 +41,4 @@ jspm_packages
 *.secret.json
 .dest*
 .env
+serviceAccountKey.json

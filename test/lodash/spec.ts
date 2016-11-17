@@ -6,7 +6,7 @@ import { AFContext, AFRequest } from '../../types';
 import { lodashAzureFunction, now } from '../../lodash/main';
 
 
-describe('endpoint: lodash', () => {
+describe('ENDPOINT: lodash', () => {
   let context: AFContext = mockContext;
   let req: AFRequest = mockRequest;
 
@@ -20,6 +20,7 @@ describe('endpoint: lodash', () => {
   it('azureFunction', async () => {
     const ctx = await lodashAzureFunction(context, req);
     const res = ctx.res;
+    console.log('res:', res);
     assert(typeof res.status === 'number');
     assert(typeof res.body === 'string');
   });

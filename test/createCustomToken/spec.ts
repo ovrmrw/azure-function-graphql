@@ -3,12 +3,17 @@ import * as assert from 'power-assert';
 import { mockContext, mockRequest } from '../lib';
 import { AFContext, AFRequest } from '../../types';
 
-import { cloudantAzureFunction as azureFunction } from '../../cloudant/main';
+import { firebaseAzureFunction as azureFunction } from '../../createCustomToken/main';
 
 
-describe('ENDPOINT: cloudant', () => {
+describe('ENDPOINT: createCustomToken', () => {
   let context: AFContext = mockContext;
   let req: AFRequest = mockRequest;
+
+
+  beforeEach(() => {
+    req.query.user_id = 'hoge';
+  });
 
 
   it('azureFunction', async () => {
@@ -17,7 +22,7 @@ describe('ENDPOINT: cloudant', () => {
     console.log('res:', res);
     assert(typeof res.status === 'number');
     assert(typeof res.body === 'object');
-    assert(res.body.total_rows === 2);
+    assert(!!res.body.customToken);
   });
 
 });
