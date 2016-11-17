@@ -2,10 +2,11 @@ const child = require('child_process');
 
 
 const check = child.execSync('git add -n -A').toString();
-console.log(check === '');
-console.log(check);
+console.log('check:', check);
+if (check) {
+  console.log('Commit file changes before deploy!');
+}
 
-return;
 
 const commands = [
   'git add -A',
