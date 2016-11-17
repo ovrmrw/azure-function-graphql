@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "tsc -p build/tsconfig-test.json",
     "test": "mocha -r .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
-    "build:azure": "tsc -p build/tsconfig-azure.json"
+    "build:azure": "tsc -p build/tsconfig-azure.json",
+    "deploy": "node build/deploy-to-azure-functions.js"
   },
   "repository": {
     "type": "git",
