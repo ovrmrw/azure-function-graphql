@@ -16,7 +16,7 @@ const child = require('child_process');
     const result = child.execSync(command).toString();
     console.log(result);
   } catch (err) { 
-    console.error(err);
+    console.error(err.Error);
   }
 });
 
