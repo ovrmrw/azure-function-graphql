@@ -17,9 +17,19 @@ const child = require('child_process');
     'git add -A',
     'git commit -m "build:azure"',
     'git push origin deploy-azure',
+].forEach(command => {
+    console.log('='.repeat(10), command);
+    try {
+        const result = child.execSync(command).toString();
+        console.log(result);
+    } catch (err) {
+        throw new Error(err.Error);
+    }
+});
+
+[
     'git checkout master',
     'git branch -D deploy-azure',
-    'git branch deploy-azure',
 ].forEach(command => {
     console.log('='.repeat(10), command);
     try {
@@ -28,7 +38,7 @@ const child = require('child_process');
     } catch (err) {
         console.error(err.Error);
     }
-});
+})
 
 // try {
 //   child.execSync('git branch deploy-azure');
