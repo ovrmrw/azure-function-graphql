@@ -23,7 +23,7 @@ const child = require('child_process');
         const result = child.execSync(command).toString();
         console.log(result);
     } catch (err) {
-        throw new Error(err.Error);
+        console.error(err.Error);
     }
 });
 
