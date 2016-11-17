@@ -7,6 +7,7 @@ export interface AFResponse {
 export interface AFContext {
   res: AFResponse;
   done: () => void;
+  log: (message?: any, ...optionalParams: any[]) => void;
 }
 
 

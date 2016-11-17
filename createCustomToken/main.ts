@@ -16,6 +16,7 @@ export const firebaseAzureFunction: AzureFunction =
 
     try {
       const customToken: string = await firebaseApp.auth().createCustomToken(uid);
+      context.log('customToken:', customToken);
       context.res = {
         status: 200,
         body: { result: { customToken } }
@@ -24,7 +25,7 @@ export const firebaseAzureFunction: AzureFunction =
       context.res = {
         status: 400,
         body: { error }
-      };      
+      };
     }
     context.done();
     // return context;
