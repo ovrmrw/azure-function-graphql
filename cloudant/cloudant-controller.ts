@@ -1,17 +1,20 @@
 import * as lodash from 'lodash'
 const Cloudant = require('cloudant')
 
-// require('dotenv').load()
-const cloudantConfig = require('../cloudant.secret.json')
-const account: string = cloudantConfig.cloudantUsername // process.env.CLOUDANT_USERNAME || ''
-const key: string = cloudantConfig.cloudantApiKey // process.env.CLOUDANT_API_KEY || ''
-const password: string = cloudantConfig.cloudantApiPassword // process.env.CLOUDANT_API_PASSWORD || ''
+require('dotenv').config();
+const account: string = process.env.CLOUDANT_USERNAME;
+const key: string = process.env.CLOUDANT_API_KEY;
+const password: string = process.env.CLOUDANT_API_PASSWORD;
+
+if ([account, key, password].some(key => !key)) {
+  throw new Error('Env keys for Cloudant are not collected.');
+}
 
 
 export class CloudantController {
   cloudant: any;
 
-  constructor() {    
+  constructor() {
     this.cloudant = Cloudant({ account, key, password })
   }
 

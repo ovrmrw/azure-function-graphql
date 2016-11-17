@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "tsc -p build/tsconfig-test.json",
-    "test": "mocha --require .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
+    "test": "mocha -r .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
     "build:azure": "tsc -p build/tsconfig-azure.json"
   },
   "repository": {
@@ -23,6 +23,7 @@
     "azure-functions-auth0": "^1.0.1",
     "cloudant": "^1.6.2",
     "dataloader": "^1.2.0",
+    "dotenv": "^2.0.0",
     "graphql": "^0.8.1",
     "graphql-tools": "^0.8.1",
     "isomorphic-fetch": "^2.2.1",
@@ -34,7 +35,7 @@
     "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.47",
     "@types/power-assert": "^1.4.29",
-    "dotenv": "^2.0.0",
+    "espower-loader": "^1.2.0",
     "mocha": "^3.1.2",
     "power-assert": "^1.4.2",
     "typescript": "^2.1.1"

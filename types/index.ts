@@ -1,8 +1,11 @@
+export interface AFResponse {
+  status?: number;
+  body?: any;
+}
+
+
 export interface AFContext {
-  res: {
-    status?: number;
-    body?: any;
-  };
+  res: AFResponse;
   done: () => void;
 }
 
@@ -14,7 +17,7 @@ export interface AFRequest {
 
 
 export interface AzureFunction {
-  (context: AFContext, req: AFRequest): Promise<void>;
+  (context: AFContext, req: AFRequest): Promise<AFContext>;
 }
 
 

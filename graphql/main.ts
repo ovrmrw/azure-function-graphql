@@ -57,4 +57,5 @@ export const graphqlAzureFunction: AzureFunction =
       };
       // context.done();
     }
+    return context;
   };
