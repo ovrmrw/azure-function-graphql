@@ -1,4 +1,4 @@
-import * as path from 'path';
+const appRoot = require('app-root-path');
 
 // import * as admin from 'firebase-admin';
 const admin = require('firebase-admin');
@@ -11,8 +11,7 @@ if ([databaseURL].some(key => !key)) {
 }
 
 
-const rootDir = path.resolve();
-const serviceAccount = require(path.join(rootDir, 'serviceAccountKey.json'));
+const serviceAccount = require(appRoot + '/serviceAccountKey.json');
 
 export const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
