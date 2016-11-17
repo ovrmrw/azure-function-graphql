@@ -1,10 +1,12 @@
-const child = require('child_process');
+const execSync = require('child_process').execSync;
 
 
-const check = child.execSync('git add -n -A').toString();
+const check = execSync('git add -n -A').toString();
 if (check) {
-  console.log('"git add -n -A" ==>', check);
+  console.log('"git add -n -A" ===>\n', check);
+  console.error('========================================');
   console.error('** Commit file changes before deploy! **');
+  console.error('========================================');
   return;
 }
 
@@ -15,7 +17,7 @@ const commands = [
   'git rebase master',
   'npm run build:azure',
   'git add -A',
-  'git commit -m "build:azure"',
+  'git commit -m "built js files for deploy"',
   'git push origin deploy-azure -f',
   'git checkout master',
   'git branch -D deploy-azure',
@@ -24,7 +26,7 @@ const commands = [
 commands.forEach(command => {
   console.log('='.repeat(20), command);
   try {
-    const result = child.execSync(command).toString();
+    const result = execSync(command).toString();
     console.log('result:', result);
   } catch (err) {
     console.error('error:', err.Error);
