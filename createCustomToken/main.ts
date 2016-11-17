@@ -10,6 +10,7 @@ export const firebaseAzureFunction: AzureFunction =
         status: 400,
         body: { error: 'user_id is needed.' }
       };
+      context.done();
       return context;
     }
 
@@ -19,13 +20,13 @@ export const firebaseAzureFunction: AzureFunction =
         status: 200,
         body: { result: { customToken } }
       };
-      // context.done();
+      context.done();
     } catch (error) {
       context.res = {
         status: 400,
         body: { error }
       };
-      // context.done();
+      context.done();
     }
     return context;
   };
