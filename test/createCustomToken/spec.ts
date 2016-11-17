@@ -21,8 +21,8 @@ describe('ENDPOINT: createCustomToken', () => {
     const res = ctx.res;
     console.log('res:', res);
     assert(typeof res.status === 'number');
-    assert(typeof res.body === 'object');
-    assert(!!res.body.customToken);
+    assert(typeof res.body.result === 'object');
+    assert(!!res.body.result.customToken);
   });
 
 });

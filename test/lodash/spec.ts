@@ -22,7 +22,7 @@ describe('ENDPOINT: lodash', () => {
     const res = ctx.res;
     console.log('res:', res);
     assert(typeof res.status === 'number');
-    assert(typeof res.body === 'string');
+    assert(typeof res.body.result.now === 'number');
   });
 
 });

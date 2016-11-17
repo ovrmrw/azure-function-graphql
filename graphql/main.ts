@@ -6,7 +6,7 @@ import { AzureFunction } from '../types';
 
 
 export const graphqlAzureFunction: AzureFunction =
-  async (context, req) => {    
+  async (context, req) => {
     const query: string = (req.body && req.body.query) ? req.body.query : `
     {
       users {
@@ -47,13 +47,13 @@ export const graphqlAzureFunction: AzureFunction =
       const result = await graphql(executableSchema, query, null, contextValue, variables);
       context.res = {
         status: 200,
-        body: result
+        body: { result }
       };
       // context.done();
-    } catch (err) {
+    } catch (error) {
       context.res = {
         status: 400,
-        body: err
+        body: { error }
       };
       // context.done();
     }

@@ -16,8 +16,8 @@ describe('ENDPOINT: cloudant', () => {
     const res = ctx.res;
     console.log('res:', res);
     assert(typeof res.status === 'number');
-    assert(typeof res.body === 'object');
-    assert(res.body.total_rows === 2);
+    assert(typeof res.body.result === 'object');
+    assert(res.body.result.total_rows === 2);
   });
 
 });

@@ -19,18 +19,22 @@ export const cloudantAzureFunction: AzureFunction =
     const cc = new CloudantController();
     const DB = 'mydb' // Database Name which you created.
 
-    console.log('req:', req);
+    try {
+      const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', 'テキスト')
+      if (result) {
+        result.rows.forEach(row => console.log(row.fields))
+      }
 
-
-    const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', 'テキスト')
-    if (result) {
-      result.rows.forEach(row => console.log(row.fields))
+      context.res = {
+        status: 200,
+        body: { result },
+      };
+    } catch (error) {
+      context.res = {
+        status: 400,
+        body: { error },
+      };
     }
-
-    context.res = {
-      status: 200,
-      body: result,
-    };
     // context.done();
     return context;
   };
