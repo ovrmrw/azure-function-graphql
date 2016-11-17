@@ -2,7 +2,9 @@ const child = require('child_process');
 
 
 [
-  // 'git branch deploy-azure',
+  'git branch deploy-azure',
+  'git add -A',
+  'git commit -m "before deploy"',
   'git checkout deploy-azure',
   'git rebase master',
   'npm run build:azure',
