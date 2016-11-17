@@ -1,26 +1,33 @@
 const child = require('child_process');
 
 
-[  
-  'git add -A',
-  'git commit -m "before deploy"',
-  'git branch deploy-azure',
-  'git checkout deploy-azure',
-  'git rebase master --skip',
-  'npm run build:azure',
-  'git add -A',
-  'git commit -m "build:azure"',
-  'git push origin deploy-azure',
-  'git checkout master',
-  'git branch -D deploy-azure',
+try {
+    child.execSync('git checkout deploy-azure');
+} catch (err) {
+    console.error('Commit file changes before deploy.');
+}
+
+[
+    'git add -A',
+    'git commit -m "before deploy"',
+    'git branch deploy-azure',
+    'git checkout deploy-azure',
+    'git rebase master --skip',
+    'npm run build:azure',
+    'git add -A',
+    'git commit -m "build:azure"',
+    'git push origin deploy-azure',
+    'git checkout master',
+    'git branch -D deploy-azure',
+    'git branch deploy-azure',
 ].forEach(command => {
-  console.log('='.repeat(10), command);
-  try {
-    const result = child.execSync(command).toString();
-    console.log(result);
-  } catch (err) { 
-    console.error(err.Error);
-  }
+    console.log('='.repeat(10), command);
+    try {
+        const result = child.execSync(command).toString();
+        console.log(result);
+    } catch (err) {
+        console.error(err.Error);
+    }
 });
 
 // try {
