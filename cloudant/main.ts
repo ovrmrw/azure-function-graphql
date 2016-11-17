@@ -36,5 +36,5 @@ export const cloudantAzureFunction: AzureFunction =
       };
     }
     context.done();
-    return context;
+    // return context;
   };

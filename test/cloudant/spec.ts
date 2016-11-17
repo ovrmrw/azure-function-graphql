@@ -12,8 +12,8 @@ describe('ENDPOINT: cloudant', () => {
 
 
   it('azureFunction', async () => {
-    const ctx = await azureFunction(context, req);
-    const res = ctx.res;
+    await azureFunction(context, req);
+    const res = context.res;
     console.log('res:', res);
     assert(typeof res.status === 'number');
     assert(typeof res.body.result === 'object');

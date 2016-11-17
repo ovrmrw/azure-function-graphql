@@ -18,8 +18,8 @@ describe('ENDPOINT: lodash', () => {
 
 
   it('azureFunction', async () => {
-    const ctx = await lodashAzureFunction(context, req);
-    const res = ctx.res;
+    await lodashAzureFunction(context, req);
+    const res = context.res;
     console.log('res:', res);
     assert(typeof res.status === 'number');
     assert(typeof res.body.result.now === 'number');

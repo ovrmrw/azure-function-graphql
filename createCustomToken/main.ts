@@ -11,7 +11,7 @@ export const firebaseAzureFunction: AzureFunction =
         body: { error: 'user_id is needed.' }
       };
       context.done();
-      return context;
+      // return context;
     }
 
     try {
@@ -27,5 +27,5 @@ export const firebaseAzureFunction: AzureFunction =
       };      
     }
     context.done();
-    return context;
+    // return context;
   };

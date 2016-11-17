@@ -11,7 +11,7 @@ export const lodashAzureFunction: AzureFunction =
     };
     // await new Promise(resolve => setTimeout(resolve, 2000));
     context.done();
-    return context;
+    // return context;
   };
 
 
