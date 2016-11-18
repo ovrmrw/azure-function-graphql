@@ -18,7 +18,7 @@ export interface AFRequest {
 
 
 export interface AzureFunction {
-  (context: AFContext, req: AFRequest): void | Promise<void>;
+  (context: AFContext, req: AFRequest): void;
 }
 
 

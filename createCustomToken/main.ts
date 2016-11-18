@@ -26,5 +26,5 @@ export const firebaseAzureFunction: AzureFunction =
       }
     }
     context.done();
-    // return context;
+    // return;
   };

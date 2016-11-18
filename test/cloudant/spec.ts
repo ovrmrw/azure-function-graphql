@@ -3,7 +3,7 @@ import * as assert from 'power-assert';
 import { mockContext, mockRequest } from '../lib';
 import { AFContext, AFRequest } from '../../types';
 
-import { cloudantAzureFunction as azureFunction } from '../../cloudant/main';
+import azureFunction from '../../cloudant';
 
 
 describe('ENDPOINT: cloudant', () => {

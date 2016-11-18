@@ -3,7 +3,7 @@ import * as assert from 'power-assert';
 import { mockContext, mockRequest } from '../lib';
 import { AFContext, AFRequest } from '../../types';
 
-import { firebaseAzureFunction as azureFunction } from '../../createCustomToken/main';
+import azureFunction from '../../createCustomToken';
 
 
 describe('ENDPOINT: createCustomToken', () => {
