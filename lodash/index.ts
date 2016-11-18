@@ -4,4 +4,4 @@ import { wrapper } from '../lib/utils';
 
 
 // export default auth0AuthenticationHook(lodashAzureFunction);
-export default wrapper(lodashAzureFunction);
+export default lodashAzureFunction;

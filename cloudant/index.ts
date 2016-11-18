@@ -4,4 +4,4 @@ import { wrapper } from '../lib/utils';
 
 
 // export default auth0AuthenticationHook(cloudantAzureFunction);
-export default auth0AuthenticationHook(wrapper(cloudantAzureFunction));
+export default auth0AuthenticationHook(cloudantAzureFunction);

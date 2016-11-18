@@ -10,22 +10,20 @@ export const firebaseAzureFunction: AzureFunction =
         status: 400,
         body: { error: 'user_id is needed.' }
       };
-      context.done();
-      // return context;
-    }
-
-    try {
-      const customToken: string = await firebaseApp.auth().createCustomToken(uid);
-      context.log('customToken:', customToken);
-      context.res = {
-        status: 200,
-        body: { result: { customToken } }
-      };
-    } catch (error) {
-      context.res = {
-        status: 400,
-        body: { error }
-      };
+    } else {
+      try {
+        const customToken: string = await firebaseApp.auth().createCustomToken(uid);
+        context.log('customToken:', customToken);
+        context.res = {
+          status: 200,
+          body: { result: { customToken } }
+        };
+      } catch (error) {
+        context.res = {
+          status: 400,
+          body: { error }
+        };
+      }
     }
     context.done();
     // return context;

@@ -4,4 +4,4 @@ import { wrapper } from '../lib/utils';
 
 
 // export default auth0AuthenticationHook(graphqlAzureFunction);
-export default auth0AuthenticationHook(wrapper(graphqlAzureFunction));
+export default auth0AuthenticationHook(graphqlAzureFunction);
