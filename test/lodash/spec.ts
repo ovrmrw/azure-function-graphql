@@ -3,7 +3,8 @@ import * as assert from 'power-assert';
 import { mockContext, mockRequest } from '../lib';
 import { AFContext, AFRequest } from '../../types';
 
-import { lodashAzureFunction, now } from '../../lodash/main';
+import azureFunction from '../../lodash';
+import { now } from '../../lodash/main';
 
 
 describe('ENDPOINT: lodash', () => {
@@ -18,9 +19,9 @@ describe('ENDPOINT: lodash', () => {
 
 
   it('azureFunction', async () => {
-    await lodashAzureFunction(context, req);
+    await azureFunction(context, req);
     const res = context.res;
-    console.log('res:', res);
+    console.log('res:', JSON.stringify(res, null, 2));
     assert(typeof res.status === 'number');
     assert(typeof res.body.result.now === 'number');
   });

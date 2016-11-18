@@ -3,16 +3,28 @@ import * as assert from 'power-assert';
 import { mockContext, mockRequest } from '../lib';
 import { AFContext, AFRequest } from '../../types';
 
-import azureFunction from '../../createCustomToken';
+import azureFunction from '../../graphql';
 
 
-describe('ENDPOINT: createCustomToken', () => {
+describe('ENDPOINT: graphql', () => {
   let context: AFContext = mockContext;
   let req: AFRequest = mockRequest;
 
 
   beforeEach(() => {
-    req.query.user_id = 'hoge';
+    req.body.query = `
+      {
+        user (id:"1") {
+          id
+          name
+          age
+          hobby {
+            id
+            name
+          }
+        }
+      }
+    `;
   });
 
 
@@ -22,7 +34,6 @@ describe('ENDPOINT: createCustomToken', () => {
     console.log('res:', JSON.stringify(res, null, 2));
     assert(typeof res.status === 'number');
     assert(typeof res.body.result === 'object');
-    assert(!!res.body.result.customToken);
   });
 
 });

@@ -19,8 +19,10 @@ export const cloudantAzureFunction: AzureFunction =
     const cc = new CloudantController();
     const DB = 'mydb' // Database Name which you created.
 
+    const keyword = req.query.keyword || req.body.keyword || 'テキスト'; 
+
     try {
-      const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', 'テキスト')
+      const result = await cc.searchDocument<SearchResult<MyDoc>>(DB, 'mydbdoc', 'mydbsearch', keyword)
       if (result) {
         result.rows.forEach(row => console.log(row.fields))
       }

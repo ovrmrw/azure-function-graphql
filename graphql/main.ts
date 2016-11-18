@@ -7,7 +7,7 @@ import { AzureFunction } from '../types';
 
 export const graphqlAzureFunction: AzureFunction =
   async (context, req) => {
-    const query: string = (req.body && req.body.query) ? req.body.query : `
+    const query: string = req.body.query || `
     {
       users {
         id
