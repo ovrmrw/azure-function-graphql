@@ -1,6 +1,7 @@
 const auth0HookFunction = require('azure-functions-auth0');
 
 import { NestedAzureFunction } from '../../types';
+import { wrapper } from '../utils';
 
 require('dotenv').config();
 const clientId = process.env.AUTH0_CLIENT_ID;
@@ -12,9 +13,15 @@ if ([clientId, clientSecret, domain].some(key => !key)) {
 }
 
 
-export const auth0AuthenticationHook: NestedAzureFunction =
-  auth0HookFunction({
+export let auth0AuthenticationHook: NestedAzureFunction;
+
+if (process.env.NODE_ENV === 'local') {
+  auth0AuthenticationHook = wrapper;
+  console.info('======= auth0AuthenticationHook is now mocked. =======');
+} else {
+  auth0AuthenticationHook = auth0HookFunction({
     clientId,
     clientSecret,
     domain,
   });
+}
