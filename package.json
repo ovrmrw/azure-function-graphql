@@ -1,5 +1,5 @@
 {
-  "name": "azure-function-graphql",
+  "name": "microservices-azure-functions",
   "version": "1.0.0",
   "description": "(experimental)",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "pretest": "tsc -p build/tsconfig-test.json",
     "test": "mocha -r .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
     "build:azure": "tsc -p build/tsconfig-azure.json",
-    "deploy": "node build/deploy-to-azure-functions.js"
+    "deploy": "node build/deploy-to-azure-functions.js",
+    "local": "node build/build-localhost.js && cd localhost && func init && func host start"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@types/node": "^6.0.47",
     "@types/power-assert": "^1.4.29",
     "espower-loader": "^1.2.0",
+    "fs-extra": "^1.0.0",
     "mocha": "^3.1.2",
     "power-assert": "^1.4.2",
     "typescript": "^2.1.1"
