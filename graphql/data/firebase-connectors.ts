@@ -1,5 +1,5 @@
 // import * as firebase from 'firebase';
-import * as lodash from 'lodash';
+// import * as lodash from 'lodash';
 import * as fetch from 'isomorphic-fetch';
 // const assert = require('power-assert');
 

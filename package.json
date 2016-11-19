@@ -24,14 +24,8 @@
   "dependencies": {
     "app-root-path": "^2.0.1",
     "azure-functions-auth0": "^1.0.1",
-    "cloudant": "^1.6.2",
-    "dataloader": "^1.2.0",
-    "dotenv": "^2.0.0",
     "firebase-admin": "^4.0.2",
-    "graphql": "^0.8.1",
-    "graphql-tools": "^0.8.1",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.0"
+    "dotenv": "^2.0.0"
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.31",
@@ -39,8 +33,11 @@
     "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.47",
     "@types/power-assert": "^1.4.29",
+    "cloudant-function": "file:cloudant",
     "espower-loader": "^1.2.0",
     "fs-extra": "^1.0.0",
+    "graphql-function": "file:graphql",
+    "lodash-function": "file:lodash",
     "mocha": "^3.1.2",
     "power-assert": "^1.4.2",
     "typescript": "^2.1.1"

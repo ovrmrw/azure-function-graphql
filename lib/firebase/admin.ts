@@ -1,4 +1,4 @@
-const appRoot = require('app-root-path');
+const appRoot = require('app-root-path').path;
 
 // import * as admin from 'firebase-admin';
 const admin = require('firebase-admin');
