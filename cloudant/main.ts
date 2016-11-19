@@ -1,5 +1,7 @@
-import { AzureFunction } from '../types';
 import { CloudantController, DocumentBase, SearchResult } from './cloudant-controller'
+
+import { passedTimeMessage } from '../lib/utils';
+import { AzureFunction } from '../types';
 
 
 interface Alice {
@@ -16,6 +18,7 @@ interface MyDoc {
 
 export const cloudantAzureFunction: AzureFunction =
   async (context, req) => {
+    const startTime = new Date().getTime();
     const cc = new CloudantController();
     const DB = 'mydb' // Database Name which you created.
 
@@ -35,6 +38,8 @@ export const cloudantAzureFunction: AzureFunction =
         body: { error },
       };
     }
+    
+    context.log(passedTimeMessage(startTime));
     context.done();
     // return context;
   };
