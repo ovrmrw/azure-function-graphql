@@ -4,11 +4,12 @@
   "description": "(experimental)",
   "main": "index.js",
   "scripts": {
+    "install:prod": "npm install --only=production",
     "pretest": "tsc -p build/tsconfig-test.json",
     "test": "mocha -r dotenv/config .dest-test/test/lib/espower-enable --timeout 5000 .dest-test/test/**/*.js",
     "build:azure": "tsc -p build/tsconfig-azure.json",
     "deploy": "node build/deploy-to-azure-functions.js",
-    "local": "node -r dotenv/config build/build-localhost.js && cd localhost && func init && func host start"
+    "local": "node build/build-localhost.js && cd localhost && func init && func host start"
   },
   "repository": {
     "type": "git",
