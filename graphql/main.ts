@@ -3,7 +3,7 @@ import { graphql } from 'graphql';
 // import { firebaseApp } from './firebase-initializer';
 import { executableSchema, executableSchema2, createLoaders, Context } from './data';
 
-import { passedTimeMessage } from '../lib/utils';
+import { passedTimeMessage, logResponse } from '../lib/utils';
 import { AzureFunction } from '../types';
 
 
@@ -58,7 +58,8 @@ export const graphqlAzureFunction: AzureFunction =
         body: { error }
       };
     }
-    
+
+    context.log(...logResponse(context));
     context.log(passedTimeMessage(startTime));
     context.done();
     // return;

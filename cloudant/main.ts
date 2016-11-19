@@ -1,6 +1,6 @@
 import { CloudantController, DocumentBase, SearchResult } from './cloudant-controller'
 
-import { passedTimeMessage } from '../lib/utils';
+import { passedTimeMessage, logResponse } from '../lib/utils';
 import { AzureFunction } from '../types';
 
 
@@ -38,7 +38,8 @@ export const cloudantAzureFunction: AzureFunction =
         body: { error },
       };
     }
-    
+
+    context.log(...logResponse(context));
     context.log(passedTimeMessage(startTime));
     context.done();
     // return context;

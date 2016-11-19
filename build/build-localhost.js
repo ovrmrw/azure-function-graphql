@@ -24,7 +24,7 @@ const dirList = [
 dirList.forEach(dir => {
   fs.copy(dir, LOCALHOST + '/' + dir, {
     filter: (filePath) => {
-      if (filePath.match(/node_modules/)) {
+      if (filePath.match(/node_modules/) || filePath.match(/\.ts$/)) {
         return false;
       } else {
         return true;

@@ -1,5 +1,5 @@
 import { firebaseApp } from '../lib/firebase';
-import { passedTimeMessage } from '../lib/utils';
+import { passedTimeMessage, logResponse } from '../lib/utils';
 import { AzureFunction } from '../types';
 
 
@@ -16,7 +16,6 @@ export const firebaseAzureFunction: AzureFunction =
     } else {
       try {
         const customToken: string = await firebaseApp.auth().createCustomToken(uid);
-        context.log('customToken:', customToken);
         context.res = {
           status: 200,
           body: { result: { customToken } }
@@ -28,7 +27,8 @@ export const firebaseAzureFunction: AzureFunction =
         };
       }
     }
-    
+
+    context.log(...logResponse(context));
     context.log(passedTimeMessage(startTime));
     context.done();
     // return;
