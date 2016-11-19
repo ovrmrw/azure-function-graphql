@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import * as lodash from 'lodash';
+// import * as lodash from 'lodash';
 
 import { User, Hobby } from './schema';
 import { getUserIdsConnector } from './firebase-connectors';

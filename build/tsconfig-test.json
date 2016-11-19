@@ -19,6 +19,7 @@
   "exclude": [
     "../localhost",
     "../node_modules",
-    "../jspm_packages"
+    "../jspm_packages",
+    "../**/node_modules"
   ]
 }

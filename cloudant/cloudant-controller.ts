@@ -1,4 +1,4 @@
-import * as lodash from 'lodash'
+import * as defaultsDeep from 'lodash/defaultsDeep'
 const Cloudant = require('cloudant')
 
 require('dotenv').config();
@@ -57,7 +57,7 @@ export class CloudantController {
   insertDocument<T>(dbName: string, insertObj: T, _id?: string): Promise<{} | null> {
     return new Promise<{} | null>((resolve, reject) => {
       const db = this.use(dbName)
-      const temp = lodash.defaultsDeep<T, T>(insertObj, _id ? { _id: _id } : {})
+      const temp = defaultsDeep<T, T>(insertObj, _id ? { _id: _id } : {})
       db.insert(temp, (err, body, header) => {
         if (err) {
           console.error(err)

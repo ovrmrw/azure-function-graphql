@@ -21,7 +21,6 @@ describe('ENDPOINT: lodash', () => {
   it('azureFunction', async () => {
     await azureFunction(context, req);
     const res = context.res;
-    console.log('res:', JSON.stringify(res, null, 2));
     assert(typeof res.status === 'number');
     assert(typeof res.body.result.now === 'number');
   });

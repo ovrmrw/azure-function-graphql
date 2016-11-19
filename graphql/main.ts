@@ -2,12 +2,15 @@ import { graphql } from 'graphql';
 
 // import { firebaseApp } from './firebase-initializer';
 import { executableSchema, executableSchema2, createLoaders, Context } from './data';
+
+import { passedTimeMessage, logResponse } from '../lib/utils';
 import { AzureFunction } from '../types';
 
 
 export const graphqlAzureFunction: AzureFunction =
   async (context, req) => {
-    const query: string = req.body.query || `
+    const startTime = new Date().getTime();
+    const query: string = req.body.query ? req.body.query : `
     {
       users {
         id
@@ -33,7 +36,7 @@ export const graphqlAzureFunction: AzureFunction =
     //   }
     // `;
 
-    const variables: {} = (req.body && req.body.variables) ? req.body.variables : null;
+    const variables: {} = req.body.variables ? req.body.variables : null;
 
     const contextValue: Context = {
       loaders: createLoaders()
@@ -55,6 +58,9 @@ export const graphqlAzureFunction: AzureFunction =
         body: { error }
       };
     }
+
+    context.log(...logResponse(context));
+    context.log(passedTimeMessage(startTime));
     context.done();
     // return;
   };
