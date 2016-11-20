@@ -11,25 +11,25 @@ export const graphqlAzureFunction: AzureFunction =
   async (context, req) => {
     const startTime = new Date().getTime();
     const query: string = req.body.query ? req.body.query : `
-    {
-      users {
-        id
-        name
-        hobby {
+      {
+        users {
           id
           name
-        }
-        follow {
-          id
-          name
-          follow {
+          hobby {
             id
             name
           }
+          follow {
+            id
+            name
+            follow {
+              id
+              name
+            }
+          }
         }
       }
-    }
-  `;
+    `;
     // const query: string = (event.body && event.body.query) ? event.body.query : `
     //   {
     //     test
@@ -44,7 +44,7 @@ export const graphqlAzureFunction: AzureFunction =
 
     console.log('query:', query);
     console.log('variables:', variables);
-    console.log('contextValue:', contextValue);
+    // console.log('contextValue:', contextValue);
 
     try {
       const result = await graphql(executableSchema, query, null, contextValue, variables);
