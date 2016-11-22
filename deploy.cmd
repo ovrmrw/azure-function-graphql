@@ -5,4 +5,4 @@ REM change current dir to wwwroot.
 cd ../wwwroot
 
 REM run npm install.
-REM npm install REM saving Azure Files disk IO costs.
+npm run prod
