@@ -37,12 +37,13 @@ jspm_packages
 .node_repl_history
 
 
-.tscOutDir
-*.secret.json
-.dest*
+/.tscOutDir
+/.dest*
+/localhost
+/data
+/secret
+
 .env
+*.secret.json
 serviceAccountKey.json
-localhost
-# data
-secret
 appsettings.json
