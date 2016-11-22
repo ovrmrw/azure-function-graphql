@@ -43,6 +43,6 @@ jspm_packages
 .env
 serviceAccountKey.json
 localhost
-data
+# data
 secret
 appsettings.json
