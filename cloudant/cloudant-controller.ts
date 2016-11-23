@@ -1,10 +1,15 @@
 import * as defaultsDeep from 'lodash/defaultsDeep'
 const Cloudant = require('cloudant')
 
-require('dotenv').config();
-const account: string = process.env.CLOUDANT_USERNAME;
-const key: string = process.env.CLOUDANT_API_KEY;
-const password: string = process.env.CLOUDANT_API_PASSWORD;
+// require('dotenv').config();
+// const account: string = process.env.CLOUDANT_USERNAME;
+// const key: string = process.env.CLOUDANT_API_KEY;
+// const password: string = process.env.CLOUDANT_API_PASSWORD;
+const appRoot = require('app-root-path').path;
+const config = require(appRoot + '/secret-key/app.secret.json');
+const account: string = config.cloudant.CLOUDANT_USERNAME;
+const key: string = config.cloudant.CLOUDANT_API_KEY;
+const password: string = config.cloudant.CLOUDANT_API_PASSWORD;
 
 if ([account, key, password].some(key => !key)) {
   throw new Error('Env keys for Cloudant are not collected.');

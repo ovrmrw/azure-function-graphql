@@ -42,6 +42,7 @@ jspm_packages
 /localhost
 /data
 /secret
+/secret-key
 
 .env
 *.secret.json
