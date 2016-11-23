@@ -4,20 +4,16 @@ const secretKeyDir = appRootDir + '/secret-key';
 // import * as admin from 'firebase-admin';
 const admin = require('firebase-admin');
 
-// require('dotenv').config();
-// const databaseURL = process.env.FIREBASE_DATABASE_URL;
-const config = require(secretKeyDir + '/app.secret.json');
-const databaseURL = config.firebase.FIREBASE_DATABASE_URL;
+import { appSecretKeyJson, serviceAccountKeyJson } from '../const';
 
+const databaseURL = appSecretKeyJson.firebase.databaseUrl;
 
 if ([databaseURL].some(key => !key)) {
   throw new Error('Env keys for Firebase are not collected.');
 }
 
 
-const serviceAccount = require(secretKeyDir + '/serviceAccountKey.json');
-
 export const firebaseApp = admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccountKeyJson),
   databaseURL,
 });

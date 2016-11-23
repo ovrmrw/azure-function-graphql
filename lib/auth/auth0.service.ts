@@ -2,16 +2,11 @@ const auth0HookFunction = require('azure-functions-auth0');
 
 import { NestedAzureFunction } from '../../types';
 import { wrapper } from '../utils';
+import { appSecretKeyJson } from '../const';
 
-// require('dotenv').config();
-// const clientId = process.env.AUTH0_CLIENT_ID;
-// const clientSecret = process.env.AUTH0_CLIENT_SECRET;
-// const domain = process.env.AUTH0_DOMAIN;
-const appRoot = require('app-root-path').path;
-const config = require(appRoot + '/secret-key/app.secret.json');
-const clientId = config.auth0.AUTH0_CLIENT_ID;
-const clientSecret = config.auth0.AUTH0_CLIENT_SECRET;
-const domain = config.auth0.AUTH0_DOMAIN;
+const clientId = appSecretKeyJson.auth0.clientId;
+const clientSecret = appSecretKeyJson.auth0.clientSecret;
+const domain = appSecretKeyJson.auth0.domain;
 
 if ([clientId, clientSecret, domain].some(key => !key)) {
   throw new Error('Env keys for Auth0 are not collected.');
@@ -20,6 +15,7 @@ if ([clientId, clientSecret, domain].some(key => !key)) {
 
 export let auth0AuthenticationHook: NestedAzureFunction;
 
+require('dotenv').config();
 if (process.env.NODE_ENV === 'local') {
   auth0AuthenticationHook = wrapper;
   console.info('======= auth0AuthenticationHook is now mocked. =======');
